@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+    <label for="name">Product Name</label>
+    <input type="text" value="<%= product.name %>" name="name" placeholder="Product Name" />
+    <label for="price">Unit Price</label>
+    <input type="number" value="<%= product.price %>" name="price" placeholder="Product Price" />
+    <label for="category"> Category</label>
+    <select name="category" id="">
+      <% categories.map((category)=> { %>
+      <option <%= product.category == category ? "selected":"" %> value="<%= category %>"><%= category %></option>
+      <%})%>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/products/<%= product._id %>">Go Back</a>
+</body>
+
+</html>
